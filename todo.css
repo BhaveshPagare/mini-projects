@@ -1,0 +1,101 @@
+/* CSS code started here */
+
+
+/* making background color as white */
+
+html {
+    background-color: rgb(255, 255, 255);
+}
+
+
+/* styling main container */
+
+.container {
+    display: flex;
+    position: fixed;
+    width: 400px;
+    margin: 0 20%;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px blue;
+    border-top: 5px solid blue;
+    border-bottom: 5px solid blue;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+/* changing font of Add INFO */
+
+h4 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+
+/* styling all child div  */
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    margin: 2px 10px;
+    padding: 1em;
+    border: 0.5px solid;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+/* styling text field  */
+
+.todo_Value {
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: larger;
+    font-family: cursive;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+
+/* giving some animation to child div */
+
+.todo:hover {
+    translate: -10px;
+    background: linear-gradient( #9cecfb, #ffffff, #9ac0ff);
+}
+
+
+/* executing this query after checked do this style */
+
+.todo:has(.todo_checkbox:checked) {
+    color: rgb(31, 21, 21);
+    background: gainsboro;
+    text-decoration: line-through;
+    order: 1;
+    border: none;
+    border-radius: 10px;
+    margin: .5px;
+    border-top: 0.5px solid rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(255, 255, 255);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+/* removing some style after hover */
+
+.todo:has(.todo_checkbox:checked):hover {
+    translate: none;
+}
+
+
+/* CSS code ended here */
