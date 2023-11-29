@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+    <!-- linking the css file to html file -->
+</head>
+
+<body>
+    <!-- starting to make calculator -->
+    <h1>..Calculator : Let's solve some equation rapidly.. </h1><br>
+    <!-- parent class start here -->
+    <div class="container">
+        <fieldset class="cali">
+            <!-- using form to take form element  -->
+            <form action="" name="calculator">
+                <!-- <input class="que" type="textarea" id="display" name="display" readonly> -->
+                <textarea readonly name="display" rows="2" id="display"></textarea>
+                <input class="ans" type="text" name="output" readonly>
+                <!-- creating first row with arithmetic operators -->
+                <!-- we used inline css here for onclick listener -->
+                <!-- The
+                `ondblclick="calculator.output.value
+                = ''"
+                onclick="calculator.display.value
+                = ''"` is a
+                JavaScript code that
+                is executed when the
+                "C" button is
+                double-clicked. It
+                clears the value of
+                the `output` field
+                and the `display`
+                field in the
+                calculator. -->
+                <div class="calsi">
+                    <input id="arith-sym" class="arith" type="button" value="C" ondblclick="calculator.output.value = ''" onclick="calculator.display.value = ''">
+                    <input id="arith-sym" class="arith" type="button" value="%" onclick="calculator.display.value += '%'">
+                    <input id="arith-sym" class="arith" type="button" value="&#9003" onClick="document.calculator.display.value =
+                    document.calculator.display.value.substring(0,document.calculator.display.value.length*1 -1)">>
+                    <input id="arith-sym" class="arith" type="button" value="/" onclick="calculator.display.value +='/'">
+                </div>
+                <!-- creating first row with arithmetic operators and number as well using onclick listener -->
+                <div class="calsi">
+                    <input class="arith" type="button" value="7" onclick="calculator.display.value += '7'">
+                    <input class="arith" type="button" value="8" onclick="calculator.display.value += '8'">
+                    <input class="arith" type="button" value="9" onclick="calculator.display.value += '9'">
+                    <input id="arith-sym" class="arith" type="button" value="+" onclick="calculator.display.value += '+'">
+                </div>
+                <!-- creating first row with arithmetic operators with combination of number as well -->
+                <div class="calsi">
+                    <input class="arith" type="button" value="4" onclick="calculator.display.value += '4'">
+                    <input class="arith" type="button" value="5" onclick="calculator.display.value += '5'">
+                    <input class="arith" type="button" value="6" onclick="calculator.display.value += '6'">
+                    <input id="arith-sym" class="arith " type="button" value="-" onclick="calculator.display.value += '-' ">
+                </div>
+                <!-- creating first row with arithmetic operators with combination of number as well  -->
+                <div class="calsi">
+                    <input class="arith" type="button" value="1" onclick="calculator.display.value += '1'">
+                    <input class="arith" type="button" value="2" onclick="calculator.display.value += '2'">
+                    <input class="arith" type="button" value="3" onclick="calculator.display.value += '3'">
+                    <input id="arith-sym" class="arith " type="button" value="x" onclick="calculator.display.value += '*'">
+                </div>
+                <!-- creating first row with arithmetic operators with combination of number as well-->
+                <div class="calsi">
+                    <input id="clearButton" class="arith" type="button" value="00" onclick="calculator.display.value += '00'">
+                    <input class="arith" type="button" value="0" onclick="calculator.display.value += '0'">
+                    <input class="arith" type="button" value="." onclick="calculator.display.value +='.'">
+                    <input id="arith-sym-ans" class="arith" type="button" value="=" onmouseover="calculator.output.value =eval(calculator.display.value)" onclick="calculator.display.value =eval(calculator.display.value) ">
+                </div>
+            </form>
+        </fieldset>
+
+    </div>
+</body>
+
+</html>
+
+<!-- HTML CODE END HERE -->
