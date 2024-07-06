@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qr code generate</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgb(5, 155, 248);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .wrapper {
+            background-color: rgb(255, 255, 255);
+            max-width: 410px;
+            border-radius: 7px;
+            padding: 16px 25px;
+            border: 2px solid;
+            transition: height 0.2s ease;
+        }
+        
+        .qr-code.active {
+            height: 300px;
+        }
+        
+        header h1 {
+            font-size: 25px;
+            font-weight: 900;
+        }
+        
+        header p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .wrapper .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 20px 0 30px;
+        }
+        
+        .form input {
+            font-size: 15px;
+            width: 88%;
+            padding: 12px 17px;
+            border: 1px solid red;
+            border-radius: 5px;
+            outline-color: black;
+        }
+        
+        .form button {
+            margin-top: 15px;
+            width: 100%;
+            height: 40px;
+            font-size: 15px;
+            color: white;
+            background-color: rgb(5, 155, 248);
+            border: none;
+            border-radius: 5px;
+        }
+        
+        img {
+            display: none;
+            opacity: 0;
+            pointer-events: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wrapper.active img {
+            display: flex;
+            margin-left: 25%;
+            width: 150px;
+            opacity: 1;
+            pointer-events: auto;
+            transition: opacity 0.1s 0.4s ease;
+        }
+        
+        .active .qr-code {
+            width: 100%;
+            height: 100%;
+            border: 2px solid gray;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1 id="header">QR Code Generator</h1>
+            <p>Paste your URL and get your QR code</p>
+        </header><br>
+        <div class="form">
+            <input type="text" placeholder="Enter your text or url">
+            <button onclick="generateQr()">Generate QR</button>
+        </div>
+
+        <div class="qr-code">
+            <img src="Qr-Code-Background-PNG.png" width="150px" alt="">
+        </div>
+    </div>
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+        qrInput = wrapper.querySelector(".form input")
+        qrImg = wrapper.querySelector(".qr-code img")
+        generateBtn = wrapper.querySelector('.form button')
+            //method one
+        function generateQr() {
+            if (qrInput.value.length > 0) {
+                qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrInput.value}`
+                wrapper.classList.add("active")
+                generateBtn.innerHTML = "QR generated"
+            } else {
+                generateBtn.innerHTML = "QR Decline"
+            }
+        }
+        //method two
+
+        // generateBtn.addEventListener('click', () => {
+        //     let qrVal = qrInput.value;
+        //     generateBtn.innerHTML = "QR generating...."
+        //     if (!qrVal) return;
+        //     qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrVal}`
+
+        //     qrImg.addEventListener('load', () => {
+        //         generateBtn.innerHTML = "QR generated"
+        //         wrapper.classList.add("active")
+
+        //     })
+        // })
+    </script>
+</body>
+
+</html>
