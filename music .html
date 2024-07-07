@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> music player</title>
+    <script src="https://kit.fontawesome.com/2c2f29789d.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .music {
+            display: block;
+            text-align: center;
+            width: 400px;
+            border-radius: 10px;
+            padding: 10px 30px;
+            box-shadow: 5px 5px 10px #a5a5a523, inset -0px -5px 10px #0000004e;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        nav .circle {
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 05px 10px rgba(255, 26, 26, .22);
+            color: red;
+        }
+        
+        img {
+            margin: 15px 0;
+            border-radius: 50%;
+            border: 10px solid #ffffff;
+            box-shadow: 0px 0px 10px #a5a5a599, inset -0px -5px 10px #000000a1;
+            animation: around ease 5s infinite;
+        }
+        
+        @keyframes around {
+            0% {
+                transform: rotate(-360deg);
+            }
+        }
+        
+        .music-play {
+            margin: 20px;
+        }
+        
+        .loading {
+            width: 100%;
+            height: 5px;
+            appearance: none;
+            border-radius: 5px;
+            background: #f53192;
+        }
+        
+        .loading::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 8px solid rgb(210, 196, 196);
+            background-color: red;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            border-radius: 05%;
+            box-shadow: 5px 5px 10px #a5a5a5, inset -5px -5px 10px #0000003c;
+            padding: 50px 0;
+            margin: 30px 0;
+        }
+        
+        .control {
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 5px 5px 10px #a5a5a55f, inset -5px -5px 10px #00000054;
+            color: red;
+        }
+        
+        .control:nth-child(2) {
+            transform: scale(1.3);
+            background-color: #f53192;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.553);
+            color: white;
+        }
+        
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="music">
+            <nav>
+                <div class="circle">
+                    <i class="fa-solid fa-angles-left"></i>
+                </div>
+                <div class="circle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+            <img id="rotated" src="src/radhaRani&krishn.jpg" height="200px" width="200px" alt=""><br>
+            <strong>Madhuraashtkam</strong><br>
+            <small>Radha Rani & Krishna - Madhuraashtakam</small>
+            <div class="music-play">
+                <audio controls id="song">
+                    <source src="src/mere ram ji se keh Dena Jai siya ram 🚩 full screen what's app status 4k Jai shree Ram status 4k (320 kbps).mp3" type="audio/mp3">
+                </audio>
+
+                <input type="range" value="0" class="loading" id="progress" onchange="progress()">
+            </div>
+            <div class="controls">
+                <div class="control"><i id="control" class="fa-solid fa-backward"></i></div>
+                <div class="control" onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                <div class="control"><i id="control" class="fa-solid fa-forward"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        let progress = document.getElementById("progress");
+        let song = document.getElementById("song");
+        let ctrlIcon = document.getElementById("ctrlIcon");
+        song.onloadedmetadata = function() {
+            progress.max = song.duration;
+            progress.value = song.currentTime;
+        }
+        let rotated = document.getElementById("rotated");
+
+        function playPause() {
+            if (ctrlIcon.classList.contains("fa-pause")) {
+                song.pause();
+                ctrlIcon.classList.remove("fa-pause");
+                ctrlIcon.classList.add("fa-play");
+
+            } else {
+                song.play();
+                ctrlIcon.classList.add("fa-pause");
+                ctrlIcon.classList.remove("fa-play");
+                rotated.style.transform = 'rotated(180deg)';
+            }
+        }
+
+
+        if (song.play()) {
+            setInterval(() => {
+                progress.value = song.currentTime;
+            }, 500);
+        }
+
+        progress.onchange = function() {
+            song.paly();
+
+            song.currentTime = progress.value;
+            ctrlIcon.classList.add("fa-pause");
+            ctrlIcon.classList.remove("fa-play");
+        }
+    </script>
+</body>
+
+</html>
